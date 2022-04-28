@@ -10,7 +10,7 @@ st.title('Domestic Flights in the U.S.A.')
 
 st.write('Please explore the dataset about domestic flights around the United States from 2005-2009!')
 
-flights_df = pd.read_csv('/work/Airports2.csv')
+flights_df = pd.read_csv('Final_Flights.csv')
 flights_df['Fly_date'] = pd.to_datetime(flights_df['Fly_date'], format = '%Y-%m')
 flights_df['Fly_date'] = pd.to_datetime(flights_df['Fly_date']).dt.to_period('m')
 flights_df['Fly_date'] = flights_df['Fly_date'].astype('str')
