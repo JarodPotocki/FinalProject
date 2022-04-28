@@ -1,10 +1,7 @@
 import pandas as pd
-import networkx as nx
 import matplotlib.pyplot as plt
 import streamlit as st
 from datetime import datetime
-from pyvis.network import Network
-from IPython.core.display import display, HTML
 import geopandas as gpd
 from plotly import graph_objects as go
 import numpy as np
@@ -132,3 +129,5 @@ ax.set_title('Annual Passenger Traffic at Airport')
 st.pyplot(fig)
 
 ##################################################################
+st.write('Check out our report: [link]https://bentleyedu-my.sharepoint.com/:w:/g/personal/cdavis_falcon_bentley_edu/EeWiKyuFBCtMjxJEBDziYB4Ba18Z55gcx6O-UQDt85LzbA?e=VtS2ZY')
+st.write('Check out our code: [link]https://deepnote.com/workspace/jarodpotocki-5d7f4739-d837-497d-909e-249bce2f28e5/project/Final-Project-Davis-and-Potocki-51f11cc4-a3cf-4877-9390-0c91ec2f82b5/%2Fnotebook.ipynb')
