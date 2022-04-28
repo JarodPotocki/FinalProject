@@ -13,7 +13,7 @@ st.title('Domestic Flights in the U.S.A.')
 
 st.write('Please explore the dataset about domestic flights around the United States from 2005-2009!')
 
-flights_df = pd.read_csv('/work/FinalProject/Final_flights.csv')
+flights_df = pd.read_csv('/work/Final_flights.csv')
 
 Airport = st.sidebar.multiselect('Choose an Airport', flights_df['Origin_airport'].unique())
 
