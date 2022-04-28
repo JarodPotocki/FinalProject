@@ -1,7 +1,10 @@
 import pandas as pd
+import networkx as nx
 import matplotlib.pyplot as plt
 import streamlit as st
 from datetime import datetime
+from pyvis.network import Network
+from IPython.core.display import display, HTML
 import geopandas as gpd
 from plotly import graph_objects as go
 import numpy as np
@@ -9,21 +12,6 @@ import numpy as np
 st.title('Domestic Flights in the U.S.A.')
 
 st.write('Please explore the dataset about domestic flights around the United States from 2005-2009!')
-
-flights_df = pd.read_csv('Final_Flights.csv')
-flights_df['Fly_date'] = pd.to_datetime(flights_df['Fly_date'], format = '%Y-%m')
-flights_df['Fly_date'] = pd.to_datetime(flights_df['Fly_date']).dt.to_period('m')
-flights_df['Fly_date'] = flights_df['Fly_date'].astype('str')
-
-flights_df['Empty_Seats'] = flights_df['Seats'] - flights_df['Passengers']
-flights_df['Available_Seat_Miles'] = flights_df['Seats'] * flights_df['Distance']
-flights_df['Revenue_Passenger_Mile'] = flights_df['Passengers'] * flights_df['Distance']
-flights_df['Missed_Revenue_Miles'] = flights_df['Available_Seat_Miles'] - flights_df['Revenue_Passenger_Mile']
-flights_df['Avg_Seats_per_Flight'] = round(flights_df['Seats']/flights_df['Flights'],0)
-flights_df = flights_df.loc[(flights_df['Fly_date'] >= '2005-01-01')
-                     & (flights_df['Fly_date'] < '2010-01-01')]
-
-flights_df = flights_df.loc[(flights_df['Flights'] >= 200)]
 
 Airport = st.sidebar.multiselect('Choose an Airport', flights_df['Origin_airport'].unique())
 
@@ -129,5 +117,3 @@ ax.set_title('Annual Passenger Traffic at Airport')
 st.pyplot(fig)
 
 ##################################################################
-st.write('Check out our report: [link]https://bentleyedu-my.sharepoint.com/:w:/g/personal/cdavis_falcon_bentley_edu/EeWiKyuFBCtMjxJEBDziYB4Ba18Z55gcx6O-UQDt85LzbA?e=VtS2ZY')
-st.write('Check out our code: [link]https://deepnote.com/workspace/jarodpotocki-5d7f4739-d837-497d-909e-249bce2f28e5/project/Final-Project-Davis-and-Potocki-51f11cc4-a3cf-4877-9390-0c91ec2f82b5/%2Fnotebook.ipynb')
